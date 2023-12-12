@@ -1,0 +1,31 @@
+<div class="container">
+  <div>
+    <h1>Obtener Egresos Registrados</h1>
+  </div>
+
+  <button (click)="obtenerEgresos()">Obtener Egresos</button>
+
+  <table class="table" *ngIf="registros && registros.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th scope="col">DESCRIPCIÓN</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">ID USUARIO</th>
+        <th>ACCIÓN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of registros">
+        <td>{{dato._id}}</td>
+        <td>{{dato.descripcion}}</td>
+        <td>{{dato.precio}}</td>
+        <td>{{dato.id_usuario}}</td>
+        <td><button (click)="eliminar(dato._id)">Eliminar</button></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+</div>

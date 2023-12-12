@@ -1,0 +1,82 @@
+<div class="container">
+    <h1>Formulario Registro de Usuarios</h1>
+
+    <form [formGroup]="formulario" (ngSubmit)="botonEnviar()">
+        <!-- INPUTS PARA Nombre, Apellido, Rut, Correo, Password -->
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Ingresa tu Nombre" formControlName="nombre">
+            <small *ngIf="formularioReactivo.nombre?.errors?.required && formularioReactivo.nombre.touched">
+                EL NOMBRE ES REQUERIDO
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Apellido:</label>
+            <input type="text" placeholder="Ingresa tu Apellido" formControlName="apellido">
+            <small *ngIf="formularioReactivo.apellido?.errors?.required && formularioReactivo.apellido.touched">
+                EL APELLIDO ES REQUERIDO
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Run</label>
+            <input type="text" placeholder="Ingresa tu RUN" formControlName="rut">
+            <small *ngIf="formularioReactivo.rut?.errors?.required && formularioReactivo.rut.touched">
+                EL RUN ES REQUERIDO
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="text" placeholder="Ingresa tu Correo" formControlName="correo">
+            <small *ngIf="formularioReactivo.correo?.errors?.required && formularioReactivo.correo.touched">
+                EL CORREO ES REQUERIDO
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="text" placeholder="Ingresa tu Password" formControlName="password">
+            <small *ngIf="formularioReactivo.password?.errors?.required && formularioReactivo.password.touched">
+                EL PASSWORD ES REQUERIDO
+            </small>
+        </div>
+
+        <!-- BOTÓN DE ENVÍO -->
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" [disabled]="!formulario.valid">Enviar</button>
+        </div>
+    </form>
+
+    <!-- Botón para obtener registros -->
+    <button (click)="obtenerRegistro()">Obtener Registros</button>
+
+    <!-- Tabla para mostrar registros -->
+    <table class="table" *ngIf="registros && registros.length > 0">
+        <!-- Encabezados de la tabla -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Run</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Password</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+            <tr *ngFor="let dato of registros">
+                <td>{{ dato._id }}</td>
+                <td>{{ dato.nombre }}</td>
+                <td>{{ dato.apellido }}</td>
+                <td>{{ dato.rut }}</td>
+                <td>{{ dato.correo }}</td>
+                <td>{{ dato.password }}</td>
+                <td><button (click)="eliminar(dato._id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

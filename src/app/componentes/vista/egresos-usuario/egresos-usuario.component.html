@@ -1,0 +1,32 @@
+<div class="container">
+  <div>
+    <h1>Obtener Egresos Realizados por Usuario</h1>
+  </div>
+
+
+  <label for="userId">ID DE USUARIO</label>
+  <input type="text" placeholder="Ingresa tu ID" id="userId" [(ngModel)]="userId" />
+
+  <button (click)="obtenerEgresosUsuario()">Obtener Egresos por Usuario</button>
+
+  <table class="table" *ngIf="registros && registros.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th scope="col">DESCRIPCIÓN</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">ID USUARIO</th>
+        <th>ACCIÓN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of registros">
+        <td>{{dato._id}}</td>
+        <td>{{dato.descripcion}}</td>
+        <td>{{dato.precio}}</td>
+        <td>{{dato.id_usuario._id}}</td>
+        <td><button (click)="eliminar(dato._id)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

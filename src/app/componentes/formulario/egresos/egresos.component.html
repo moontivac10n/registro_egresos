@@ -1,0 +1,62 @@
+<div class="container">
+    <h1>Formulario de Egresos</h1>
+
+    <form [formGroup]="formulario" (ngSubmit)="botonEnviar()">
+        <!-- Campos para Descripción, Precio y ID Usuario -->
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Ingresa el Nombre" formControlName="descripcion">
+            <small *ngIf="formularioReactivo.descripcion?.errors?.required && formularioReactivo.descripcion.touched">
+                EL NOMBRE ES REQUERIDO
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>Precio</label>
+            <input type="number" placeholder="Ingresa el Precio" formControlName="precio">
+            <small *ngIf="formularioReactivo.precio?.errors?.required && formularioReactivo.precio.touched">
+                EL PRECIO ES REQUERIDO
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label>ID</label>
+            <input type="text" placeholder="Ingresa el ID de Usuario" formControlName="id_usuario">
+            <small *ngIf="formularioReactivo.id_usuario?.errors?.required && formularioReactivo.id_usuario.touched">
+                EL ID DE USUARIO ES REQUERIDO
+            </small>
+        </div>
+
+        <!-- Botón de Envío -->
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" [disabled]="!formulario.valid">Enviar</button>
+        </div>
+    </form>
+
+    <!-- Botón para obtener egresos -->
+    <button (click)="obtenerEgresos()">Obtener Egresos</button>
+
+    <!-- Tabla para mostrar registros de egresos -->
+    <table class="table" *ngIf="registros && registros.length > 0">
+        <!-- Encabezados de la tabla -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">ID Usuario</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+            <tr *ngFor="let dato of registros">
+                <td>{{ dato._id }}</td>
+                <td>{{ dato.descripcion }}</td>
+                <td>{{ dato.precio }}</td>
+                <td>{{ dato.id_usuario }}</td>
+                <td><button (click)="eliminar(dato._id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

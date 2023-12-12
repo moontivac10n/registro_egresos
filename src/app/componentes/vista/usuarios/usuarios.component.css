@@ -1,0 +1,108 @@
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #000000;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type='text'] {
+    width: calc(100% - 30px);
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para reducir el ancho del input */
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 70%;
+    /* Cambia el valor según el tamaño deseado */
+    /* Otros estilos si es necesario */
+}
+
+.table th,
+.table td {
+    font-size: 14px;
+    /* Tamaño de fuente más pequeño */
+}
+
+/* Define un ancho máximo para las celdas de la tabla */
+.table th,
+.table td {
+    max-width: 300px;
+    /* Ancho máximo de las celdas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Estilos previos */
+
+/* Estilos para el botón Enviar */
+button[type="submit"] {
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #4CAF50;
+    /* Cambia el color al pasar el mouse */
+}
+
+/* Estilos para los botones Eliminar en la tabla */
+table button {
+    transition: background-color 0.3s ease;
+}
+
+table button:hover {
+    background-color: #f44336;
+    /* Cambia el color al pasar el mouse */
+}
+
+/* Estilos para las advertencias */
+small {
+    display: block;
+    color: #d9534f;
+    margin-top: 5px;
+}
